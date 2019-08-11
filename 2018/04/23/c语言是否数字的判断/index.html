@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#最近在完成C语言课程的作业中发现在很多程序中，如果自己有更高的要求，是经常要用到对输入字符串判断是否为纯数值，于是对近来学到的这种判断方法做一个记录与整理 使用scanf()函数的返回值这是我初期使用最多的方法，直接利用scanf()函数的返回值来判断输入的是否为数值，如果是数值则会返回1，所以可以直接用scanf()函数的返回值来判断但是这样的方法会存在一个问题，当输入的第一个值为数值后，sc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/04/23/c语言是否数字的判断/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#最近在完成C语言课程的作业中发现在很多程序中，如果自己有更高的要求，是经常要用到对输入字符串判断是否为纯数值，于是对近来学到的这种判断方法做一个记录与整理 使用scanf()函数的返回值这是我初期使用最多的方法，直接利用scanf()函数的返回值来判断输入的是否为数值，如果是数值则会返回1，所以可以直接用scanf()函数的返回值来判断但是这样的方法会存在一个问题，当输入的第一个值为数值后，sc">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-04-23T13:52:59.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#最近在完成C语言课程的作业中发现在很多程序中，如果自己有更高的要求，是经常要用到对输入字符串判断是否为纯数值，于是对近来学到的这种判断方法做一个记录与整理 使用scanf()函数的返回值这是我初期使用最多的方法，直接利用scanf()函数的返回值来判断输入的是否为数值，如果是数值则会返回1，所以可以直接用scanf()函数的返回值来判断但是这样的方法会存在一个问题，当输入的第一个值为数值后，sc">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c语言是否数字的判断" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/23/c语言是否数字的判断/" class="article-date">
+  <time datetime="2018-04-23T13:11:26.451Z" itemprop="datePublished">2018-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#<br>最近在完成C语言课程的作业中发现在很多程序中，如果自己有更高的要求，是经常要用到对输入字符串判断是否为纯数值，于是对近来学到的这种判断方法做一个记录与整理</p>
+<h2 id="使用scanf-函数的返回值"><a href="#使用scanf-函数的返回值" class="headerlink" title="使用scanf()函数的返回值"></a>使用scanf()函数的返回值</h2><p>这是我初期使用最多的方法，直接利用scanf()函数的返回值来判断输入的是否为数值，如果是数值则会返回1，所以可以直接用scanf()函数的返回值来判断<br>但是这样的方法会存在一个问题，当输入的第一个值为数值后，scacnf()函数的返回值会直接为1，所以如果输入像“1cntwzcom”这样的字符串，scanf()函数返回的值是1，目前笔者还未能清楚地知道这种情况出现的原因，了解过后之后会回来补坑，所以单纯地这样使用scanf()函数来判断输入的字符串是否为纯数值是不严谨的。</p>
+<h2 id="使用string库中的isdigit-函数"><a href="#使用string库中的isdigit-函数" class="headerlink" title="使用string库中的isdigit()函数"></a>使用string库中的isdigit()函数</h2><p>isdigit()函数有一个参数,是用来判断是否为纯十进制数的字符串，如果给的参数 是十进制数字，则为 true；否则，为 false。</p>
+<h2 id="通过ASCII码来判断"><a href="#通过ASCII码来判断" class="headerlink" title="通过ASCII码来判断"></a>通过ASCII码来判断</h2><p>这应该是最容易想到的一种方法，以数组的方式循环判断每一个元素是否在ASCII码48~57之间，也是最严谨的一种方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/23/c语言是否数字的判断/" data-id="cjz6qgyr00000qgfte4vvui4q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/11/python2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/11/python2/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/23/c语言是否数字的判断/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

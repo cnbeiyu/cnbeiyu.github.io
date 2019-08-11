@@ -7,13 +7,17 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="自己对Python学习一段时间后基础知识的复习、总结、与回顾（二）列表列表中的for循环在python中，for循环在列表中出现的频率非常高，因为通过for循环是一种非常简单高效的遍历列表的方式，例如，我们想要输出列表colour中的所有元素，我们可以这样写 123456colours = [&amp;apos;red&amp;apos;,&amp;apos;blue&amp;apos;,&amp;apos;green&amp;apos;]fo">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/python2/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="自己对Python学习一段时间后基础知识的复习、总结、与回顾（二）列表列表中的for循环在python中，for循环在列表中出现的频率非常高，因为通过for循环是一种非常简单高效的遍历列表的方式，例如，我们想要输出列表colour中的所有元素，我们可以这样写 123456colours = [&amp;apos;red&amp;apos;,&amp;apos;blue&amp;apos;,&amp;apos;green&amp;apos;]fo">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-11T08:58:41.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="自己对Python学习一段时间后基础知识的复习、总结、与回顾（二）列表列表中的for循环在python中，for循环在列表中出现的频率非常高，因为通过for循环是一种非常简单高效的遍历列表的方式，例如，我们想要输出列表colour中的所有元素，我们可以这样写 123456colours = [&amp;apos;red&amp;apos;,&amp;apos;blue&amp;apos;,&amp;apos;green&amp;apos;]fo">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-python2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-python2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/11/python2/" class="article-date">
   <time datetime="2019-08-11T08:57:59.702Z" itemprop="datePublished">2019-08-11</time>
@@ -131,41 +133,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-c语言是否数字的判断" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/23/c语言是否数字的判断/" class="article-date">
-  <time datetime="2018-04-23T13:11:26.451Z" itemprop="datePublished">2018-04-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#<br>最近在完成C语言课程的作业中发现在很多程序中，如果自己有更高的要求，是经常要用到对输入字符串判断是否为纯数值，于是对近来学到的这种判断方法做一个记录与整理</p>
-<h2 id="使用scanf-函数的返回值"><a href="#使用scanf-函数的返回值" class="headerlink" title="使用scanf()函数的返回值"></a>使用scanf()函数的返回值</h2><p>这是我初期使用最多的方法，直接利用scanf()函数的返回值来判断输入的是否为数值，如果是数值则会返回1，所以可以直接用scanf()函数的返回值来判断<br>但是这样的方法会存在一个问题，当输入的第一个值为数值后，scacnf()函数的返回值会直接为1，所以如果输入像“1cntwzcom”这样的字符串，scanf()函数返回的值是1，目前笔者还未能清楚地知道这种情况出现的原因，了解过后之后会回来补坑，所以单纯地这样使用scanf()函数来判断输入的字符串是否为纯数值是不严谨的。</p>
-<h2 id="使用string库中的isdigit-函数"><a href="#使用string库中的isdigit-函数" class="headerlink" title="使用string库中的isdigit()函数"></a>使用string库中的isdigit()函数</h2><p>isdigit()函数有一个参数,是用来判断是否为纯十进制数的字符串，如果给的参数 是十进制数字，则为 true；否则，为 false。</p>
-<h2 id="通过ASCII码来判断"><a href="#通过ASCII码来判断" class="headerlink" title="通过ASCII码来判断"></a>通过ASCII码来判断</h2><p>这应该是最容易想到的一种方法，以数组的方式循环判断每一个元素是否在ASCII码48~57之间，也是最严谨的一种方法</p>
+  
+    <a href="/2018/04/23/c语言是否数字的判断/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/23/c语言是否数字的判断/" data-id="cjz6qgyr00000qgfte4vvui4q" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
