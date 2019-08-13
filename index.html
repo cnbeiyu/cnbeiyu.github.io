@@ -376,7 +376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/python2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/C语言是否为数字的判断/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="谈闻卓">
@@ -395,7 +395,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/11/python2/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/04/23/C语言是否为数字的判断/" itemprop="url">C语言是否为数字的判断</a></h1>
         
 
         <div class="post-meta">
@@ -407,8 +407,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-11T16:57:59+08:00">
-                2019-08-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-23T21:52:25+08:00">
+                2018-04-23
               </time>
             
 
@@ -447,7 +447,130 @@
       
         
           
-            <h1 id="自己对Python学习一段时间后基础知识的复习、总结、与回顾（二）"><a href="#自己对Python学习一段时间后基础知识的复习、总结、与回顾（二）" class="headerlink" title="自己对Python学习一段时间后基础知识的复习、总结、与回顾（二）"></a>自己对Python学习一段时间后基础知识的复习、总结、与回顾（二）</h1><h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="列表中的for循环"><a href="#列表中的for循环" class="headerlink" title="列表中的for循环"></a>列表中的for循环</h2><p>在python中，for循环在列表中出现的频率非常高，因为通过for循环是一种非常简单高效的遍历列表的方式，例如，我们想要输出列表colour中的所有元素，我们可以这样写</p>
+            <p>#<br>最近在完成C语言课程的作业中发现在很多程序中，如果自己有更高的要求，是经常要用到对输入字符串判断是否为纯数值，于是对近来学到的这种判断方法做一个记录与整理</p>
+<h2 id="使用scanf-函数的返回值"><a href="#使用scanf-函数的返回值" class="headerlink" title="使用scanf()函数的返回值"></a>使用scanf()函数的返回值</h2><p>这是我初期使用最多的方法，直接利用scanf()函数的返回值来判断输入的是否为数值，如果是数值则会返回1，所以可以直接用scanf()函数的返回值来判断<br>但是这样的方法会存在一个问题，当输入的第一个值为数值后，scacnf()函数的返回值会直接为1，所以如果输入像“1cntwzcom”这样的字符串，scanf()函数返回的值是1，目前笔者还未能清楚地知道这种情况出现的原因，了解过后之后会回来补坑，所以单纯地这样使用scanf()函数来判断输入的字符串是否为纯数值是不严谨的。</p>
+<h2 id="使用string库中的isdigit-函数"><a href="#使用string库中的isdigit-函数" class="headerlink" title="使用string库中的isdigit()函数"></a>使用string库中的isdigit()函数</h2><p>isdigit()函数有一个参数,是用来判断是否为纯十进制数的字符串，如果给的参数 是十进制数字，则为 true；否则，为 false。</p>
+<h2 id="通过ASCII码来判断"><a href="#通过ASCII码来判断" class="headerlink" title="通过ASCII码来判断"></a>通过ASCII码来判断</h2><p>这应该是最容易想到的一种方法，以数组的方式循环判断每一个元素是否在ASCII码48~57之间，也是最严谨的一种方法</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/29/python小整理2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谈闻卓">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="谈闻卓的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/29/python小整理2/" itemprop="url">python小整理2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T00:00:36+08:00">
+                2018-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="列表中的for循环"><a href="#列表中的for循环" class="headerlink" title="列表中的for循环"></a>列表中的for循环</h2><p>在python中，for循环在列表中出现的频率非常高，因为通过for循环是一种非常简单高效的遍历列表的方式，例如，我们想要输出列表colour中的所有元素，我们可以这样写</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;green&apos;]</span><br><span class="line">for colour in colours:</span><br><span class="line">    print(colour)</span><br><span class="line">&gt;&gt;&gt;red</span><br><span class="line">blue</span><br><span class="line">green</span><br></pre></td></tr></table></figure>
 
 <p>这里的for循环会首先获取列表的第一个值red，然后将其存储在变量colour中，之后打印colour，python中的很多语法都靠缩进来实现，所以缩进非常重要，这里的for循环的开始与结束条件就是通过for循环中的：与缩进判断的。</p>
@@ -542,7 +665,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/c语言是否数字的判断/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/24/python小整理1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="谈闻卓">
@@ -561,7 +684,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/23/c语言是否数字的判断/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/01/24/python小整理1/" itemprop="url">python小整整理1</a></h1>
         
 
         <div class="post-meta">
@@ -573,8 +696,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-23T21:11:26+08:00">
-                2018-04-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-24T14:51:04+08:00">
+                2018-01-24
               </time>
             
 
@@ -613,10 +736,71 @@
       
         
           
-            <p>#<br>最近在完成C语言课程的作业中发现在很多程序中，如果自己有更高的要求，是经常要用到对输入字符串判断是否为纯数值，于是对近来学到的这种判断方法做一个记录与整理</p>
-<h2 id="使用scanf-函数的返回值"><a href="#使用scanf-函数的返回值" class="headerlink" title="使用scanf()函数的返回值"></a>使用scanf()函数的返回值</h2><p>这是我初期使用最多的方法，直接利用scanf()函数的返回值来判断输入的是否为数值，如果是数值则会返回1，所以可以直接用scanf()函数的返回值来判断<br>但是这样的方法会存在一个问题，当输入的第一个值为数值后，scacnf()函数的返回值会直接为1，所以如果输入像“1cntwzcom”这样的字符串，scanf()函数返回的值是1，目前笔者还未能清楚地知道这种情况出现的原因，了解过后之后会回来补坑，所以单纯地这样使用scanf()函数来判断输入的字符串是否为纯数值是不严谨的。</p>
-<h2 id="使用string库中的isdigit-函数"><a href="#使用string库中的isdigit-函数" class="headerlink" title="使用string库中的isdigit()函数"></a>使用string库中的isdigit()函数</h2><p>isdigit()函数有一个参数,是用来判断是否为纯十进制数的字符串，如果给的参数 是十进制数字，则为 true；否则，为 false。</p>
-<h2 id="通过ASCII码来判断"><a href="#通过ASCII码来判断" class="headerlink" title="通过ASCII码来判断"></a>通过ASCII码来判断</h2><p>这应该是最容易想到的一种方法，以数组的方式循环判断每一个元素是否在ASCII码48~57之间，也是最严谨的一种方法</p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自己对Python的学习也有一段时间了，但由于种种原因，学习时的连贯性和系统性不是很强，也还没有一个自己完整的Python项目出现，所以决定利用这几天的时间，对之前所学的Python基础部分通过博客的方式做一次回顾与整理，以便自己可以巩固Python的体系与语法，如果我的这些整理可以对看到的你们有一些小帮助，那真是再好不过了。</p>
+<h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><p>我在这里并不想对开发环境做出过多的赘述，毕竟开发环境多种多样，学习初期对开发环境的要求也不高，笔者这里所用的是</p>
+<ul>
+<li>win10 1709</li>
+<li>python3.6.3</li>
+<li>Sublime Text3</li>
+</ul>
+<p>通过将近半年的使用，个人感觉非常不错，简约快速的同时又有非常丰富的插件，这也是笔者所比较推崇的一款编辑器。关于Python的相关介绍，笔者也不想再这里进行阐述。</p>
+<h1 id="变量与数据类型"><a href="#变量与数据类型" class="headerlink" title="变量与数据类型"></a>变量与数据类型</h1><h4 id="变量命名规则"><a href="#变量命名规则" class="headerlink" title="变量命名规则"></a>变量命名规则</h4><ul>
+<li>只能包含字母、数字和下划线，且变量命名不能以数字开头</li>
+<li>不能包含空格</li>
+<li>不能将Python关键字和函数名用作变量</li>
+<li>变量名应简短又具有描述性，且尽量小写</li>
+<li>慎用小写字母l和大写字母O</li>
+</ul>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
+<li>title() 首字母大写</li>
+<li>upper() 全部大写</li>
+<li>lower() 全部小写</li>
+<li>strip() 删除字符首末空白</li>
+<li>rstrip() 删除字符末尾空白</li>
+<li>lstrip() 删除字符开头空白</li>
+<li>空白泛指任何非打印字符，如空格、制表符和换行符</li>
+</ul>
+<h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><p>Python中整数与浮点数在使用时非常友好，在大部分情况下，使用数字时无需考虑整数与浮点数的区别。<br>Python中使用函数str()来进行字符串与数字中的互换，str()既可以将字符串用作值，也可以将值用作字符串。</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>列表是由一系列按特定顺序排列的元素组成的一个集合，元素之间互相独立，Python中用[ ]来表示列表，并用逗号分隔其中的元素，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表元素"><a href="#列表元素" class="headerlink" title="列表元素"></a>列表元素</h2><p>每一个元素所在的位置对应着它的索引，列表名[索引]是表示元素的方式，如colour[1]，要注意的是，Python像大多数的程序语言一样，列表中的索引是从0开始的，而不是1，所以访问列表的第一个元素应该是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;]</span><br><span class="line">print(colours[0])</span><br><span class="line">&gt;&gt;&gt;red</span><br></pre></td></tr></table></figure>
+
+<p>当索引为-1时，Python将返回列表中的最后一个元素</p>
+<h4 id="增加元素"><a href="#增加元素" class="headerlink" title="增加元素"></a>增加元素</h4><p>在列表末尾增加函数可以使用方法append()，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;]</span><br><span class="line">colours.append(&apos;green&apos;)</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;[&apos;red&apos;, &apos;blue&apos;, &apos;yellow&apos;, &apos;green&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>就可以为colours列表的末尾增加一个’green’元素<br>在列表的任意位置增加元素可以使用方法insert(),例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;]</span><br><span class="line">colours.append(1，&apos;green&apos;)</span><br><span class="line">&gt;&gt;&gt;[&apos;red&apos;,&apos;green&apos;, &apos;blue&apos;, &apos;yellow&apos; ]</span><br></pre></td></tr></table></figure>
+
+<p>就可以在colours列表的第二个位置增加元素’green’。</p>
+<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><p>如果已知要删除的元素的索引，可以使用del语句删除元素，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;]</span><br><span class="line">del colours[1]</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;[&apos;red&apos;, &apos;yellow&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>如果已知要删除的元素的值，可以用方法remove(),例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;]</span><br><span class="line">colours.remove(&apos;red&apos;)</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;[&apos;blue&apos;, &apos;yellow&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>如果我们要使用删除元素的值，可以使用方法pop()。<br>pop()可以弹出任意位置的元素，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;]</span><br><span class="line">del_colours = colours.pop(2)</span><br><span class="line">print(del_colours)</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;yellow</span><br><span class="line">[&apos;red&apos;, &apos;blue&apos;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h2><h4 id="按字母排序"><a href="#按字母排序" class="headerlink" title="按字母排序"></a>按字母排序</h4><p>方法sort()可以永久性地让列表按元素字母顺序排序，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;green&apos;]</span><br><span class="line">colours.sort()</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;[&apos;blue&apos;, &apos;green&apos;, &apos;red&apos;, &apos;yellow&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>给方法传递参数reverse=True可以让列表按字母倒叙排列，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;green&apos;]</span><br><span class="line">colours.sort(reverse=True)</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;[&apos;yellow&apos;, &apos;red&apos;, &apos;green&apos;, &apos;blue&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>如果我们只想让列表中的元素暂时地排序，不影响它们在列表中的原始排列顺序，可以使用函数sorted()<br>例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;green&apos;]</span><br><span class="line">print(sorted(colours))</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;[&apos;blue&apos;, &apos;green&apos;, &apos;red&apos;, &apos;yellow&apos;]</span><br><span class="line">&gt;&gt;&gt;[&apos;red&apos;, &apos;blue&apos;, &apos;yellow&apos;, &apos;green&apos;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="将列表倒序"><a href="#将列表倒序" class="headerlink" title="将列表倒序"></a>将列表倒序</h4><p>方法reverse()可以永久反转列表中元素的排列顺序，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;green&apos;]</span><br><span class="line">colours.reverse()</span><br><span class="line">print(colours)</span><br><span class="line">&gt;&gt;&gt;[&apos;green&apos;, &apos;yellow&apos;, &apos;blue&apos;, &apos;red&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>如果想要恢复到原始的顺序，只需要对列表再次调用reverse()就可以了~</p>
+<p>####确定列表长度<br>使用函数len()可以返回列表长度的值，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colours = [&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;green&apos;]</span><br><span class="line">length = len(colours)</span><br><span class="line">print(length)</span><br><span class="line">&gt;&gt;&gt;4</span><br></pre></td></tr></table></figure>
+
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>以上就是这次复习回顾的第一部分，第一次的复习回顾在语言组织上还不是很恰当，但重要的语法和注意点基本都在这边记录了，每一个语法也都给出了具体的例子。由于是复习回顾，在表达方面可能比较枯燥，也没有图片来给文字润色，还是希望以后的自己回顾这些知识点时可以会心一笑，如果我的这次复习回顾对在看的你能有一点小帮助，那就再好不过了。</p>
 
           
         
@@ -698,7 +882,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -711,7 +895,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
