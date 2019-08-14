@@ -232,6 +232,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/Spring Data Jpa简介及常用查询整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谈闻卓">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="谈闻卓的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/14/Spring Data Jpa简介及常用查询整理/" itemprop="url">Spring Data Jpa简介及常用查询整理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-14T23:34:31+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Spring-Data-Jpa简介"><a href="#Spring-Data-Jpa简介" class="headerlink" title="Spring Data Jpa简介"></a>Spring Data Jpa简介</h1><p>JPA(Java Persistence API)是Sun官方提出的Java持久化规范，主要是为了简化现有的持久化开发和整合第三方ORM框架。</p>
+<p>Spring Data 是 Spring 的一个子项目，其下面有很多我们熟知的Spring-data-jpa,Spring-data-template,Spring-data-mongodb,Spring-data-redis，为的就是做好持久化工作而简化数据库的访问。</p>
+<p>Spring Data Jpa极大地减少了DAO层的开发，在声明持久层的接口后，借助CrudRepository我们几乎就不写一条SQL/SPQL语句可以完成基本的CURD功能。<br>Repository 接口是 Spring Data 的一个核心接口，它不提供任何方法，开发者需要在自己定义的接口中声明需要的方法。常用的Repository接口有以下几种：</p>
+<ul>
+<li>Repository：空接口，表明任何继承它的均为仓库接口类</li>
+<li>CrudRepository：继承 Repository，实现了一组 CRUD 相关的方法</li>
+<li>PagingAndSortingRepository：继承 CrudRepository，实现了一组分页排序相关的方法</li>
+<li>JpaRepository：继承 PagingAndSortingRepository，实现一组 JPA 规范相关的方法</li>
+<li>自定义的 XxxxRepository：需要继承 JpaRepository，这样的 XxxxRepository 接口就具备了通用的数据访问控制层的能力。</li>
+<li>JpaSpecificationExecutor：不属于Repository体系，实现一组 JPA Criteria 查询相关的方法<br><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%95%B4%E7%90%86/1.png" alt="Repository继承图"><h1 id="Spring-Data-Jpa简单查询"><a href="#Spring-Data-Jpa简单查询" class="headerlink" title="Spring Data Jpa简单查询"></a>Spring Data Jpa简单查询</h1>Spring Data Jpa的简单查询简单到令人发指，你可以通过find…By，read…By，query…By，count…By，get…By和delete…by以及一些关键字来直接用函数名的方式来完成基本的CRUD任务，如findByLastnameAndFirstname对应的JPQL代码就是… where x.lastname = ?1 and x.firstname = ?2，以下是Spring Data Jpa的关键字，来源为<a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query" target="_blank" rel="noopener">Spring官方文档</a><br><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%95%B4%E7%90%86/2.png" alt="SpringDataJpa关键字"><br>比如我们要查询Username中所有姓谈的，年龄小于18的就可以这样构造<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;User&gt; <span class="title">findByUsernameStartingWithAndAgeLessThan</span><span class="params">(String name, Long id)</span></span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>Spring Data Jpa中还有一个超方便的是Spring Data Jpa直接提供了分页和排序功能！<br>在继承PagingAndSortingRepository接口后，只要在查询的方法中，加入Pageable哦Sort类型的参数，即可实现分页和排序的功能，如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page&lt;User&gt; <span class="title">findALL</span><span class="params">(Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>Pageable是spring封装的分页实现类,其中需要传入的属性有PageNumber和PageSize，分别表示需查询的页码，和单页容量。Page<t>是封装好的返回类，其中常用到的有TotalPages，TotalElements以及List<t> Content。</t></t></p>
+<h5 id="原生Repository层"><a href="#原生Repository层" class="headerlink" title="原生Repository层"></a>原生Repository层</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PagingAndSortingRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">Iterable&lt;T&gt; <span class="title">findAll</span><span class="params">(Sort var1)</span></span>;</span><br><span class="line">    <span class="function">Page&lt;T&gt; <span class="title">findAll</span><span class="params">(Pageable var1)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Service层的调用"><a href="#Service层的调用" class="headerlink" title="Service层的调用"></a>Service层的调用</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;IMS&gt; <span class="title">getPage</span><span class="params">(Integer pageNum, Integer pageLimit)</span></span>&#123;</span><br><span class="line">    PageRequest pageRequest=PageRequest.of(pageNum-<span class="number">1</span>,pageLimit);</span><br><span class="line">    <span class="keyword">return</span> imsRepository.findAll( pageRequest);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="JPQL查询"><a href="#JPQL查询" class="headerlink" title="JPQL查询"></a>JPQL查询</h1><p>未完待续，太困了先睡觉了，明天一定填完坑！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/Springboot +Redis  redisTemplate注入失败，报NullPointerException异常的一种解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -869,7 +1010,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -882,7 +1023,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
