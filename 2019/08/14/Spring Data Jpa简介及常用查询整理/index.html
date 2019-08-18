@@ -89,7 +89,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%95%B4%E7%90%86/1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%95%B4%E7%90%86/2.png">
-<meta property="og:updated_time" content="2019-08-14T17:56:10.136Z">
+<meta property="og:updated_time" content="2019-08-18T16:29:14.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Data Jpa简介及常用查询整理">
 <meta name="twitter:description" content="Spring Data Jpa简介JPA(Java Persistence API)是Sun官方提出的Java持久化规范，主要是为了简化现有的持久化开发和整合第三方ORM框架。 Spring Data 是 Spring 的一个子项目，其下面有很多我们熟知的Spring-data-jpa,Spring-data-template,Spring-data-mongodb,Spring-data-red">
@@ -329,7 +329,7 @@
 
 <h5 id="Service层的调用"><a href="#Service层的调用" class="headerlink" title="Service层的调用"></a>Service层的调用</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;IMS&gt; <span class="title">getPage</span><span class="params">(Integer pageNum, Integer pageLimit)</span></span>&#123;</span><br><span class="line">    PageRequest pageRequest=PageRequest.of(pageNum-<span class="number">1</span>,pageLimit);</span><br><span class="line">    <span class="keyword">return</span> imsRepository.findAll( pageRequest);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="JPQL查询"><a href="#JPQL查询" class="headerlink" title="JPQL查询"></a>JPQL查询</h1><p>未完待续，太困了先睡觉了，明天一定填完坑！</p>
+<h1 id="JPQL查询"><a href="#JPQL查询" class="headerlink" title="JPQL查询"></a>JPQL查询</h1><p>留坑，择日再补上</p>
 
       
     </div>
