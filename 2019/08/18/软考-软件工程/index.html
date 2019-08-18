@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="软考 软件工程,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="软件过程模型软件过程模型习惯上也称为软件开发模型，它是软件开发的全部过程、活动和任务的结构框架。典型的软件过程模型有瀑布模型增量模型、演化模型（原型模型、螺旋模型）、喷泉模型、基于构件的开发模型和形式化方法模型等 瀑布模型瀑布模型是最早的开发模型，用于结构化开发，与1970年被提出，当年盛极一时，如今已逐渐淡出人们的视野。落寞的根本原因是需求阶段难以把控，在项目初期难以真正确定需求，回溯成本巨大。">
+<meta name="keywords" content="软考 软件工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程基础知识整理（一）">
+<meta property="og:url" content="http://yoursite.com/2019/08/18/软考-软件工程/index.html">
+<meta property="og:site_name" content="谈闻卓的博客">
+<meta property="og:description" content="软件过程模型软件过程模型习惯上也称为软件开发模型，它是软件开发的全部过程、活动和任务的结构框架。典型的软件过程模型有瀑布模型增量模型、演化模型（原型模型、螺旋模型）、喷泉模型、基于构件的开发模型和形式化方法模型等 瀑布模型瀑布模型是最早的开发模型，用于结构化开发，与1970年被提出，当年盛极一时，如今已逐渐淡出人们的视野。落寞的根本原因是需求阶段难以把控，在项目初期难以真正确定需求，回溯成本巨大。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/V%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%96%B7%E6%B3%89%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:updated_time" content="2019-08-18T15:33:32.294Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程基础知识整理（一）">
+<meta name="twitter:description" content="软件过程模型软件过程模型习惯上也称为软件开发模型，它是软件开发的全部过程、活动和任务的结构框架。典型的软件过程模型有瀑布模型增量模型、演化模型（原型模型、螺旋模型）、喷泉模型、基于构件的开发模型和形式化方法模型等 瀑布模型瀑布模型是最早的开发模型，用于结构化开发，与1970年被提出，当年盛极一时，如今已逐渐淡出人们的视野。落寞的根本原因是需求阶段难以把控，在项目初期难以真正确定需求，回溯成本巨大。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/18/软考-软件工程/">
+
+
+
+
+
+  <title>软件工程基础知识整理（一） | 谈闻卓的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">谈闻卓的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/软考-软件工程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="www.cntwz.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="谈闻卓的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软件工程基础知识整理（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T19:32:17+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h1><p>软件过程模型习惯上也称为软件开发模型，它是软件开发的全部过程、活动和任务的结构框架。典型的软件过程模型有瀑布模型<br>增量模型、演化模型（原型模型、螺旋模型）、喷泉模型、基于构件的开发模型和形式化方法模型等</p>
+<h2 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h2><p>瀑布模型是最早的开发模型，用于结构化开发，与1970年被提出，当年盛极一时，如今已逐渐淡出人们的视野。落寞的根本原因是需求阶段难以把控，在项目初期难以真正确定需求，回溯成本巨大。瀑布模型的优点也显而易见，容易理解，管理成本低，该模型只适用于需求明确的项目或者是二次开发的项目。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png" alt="瀑布模型"></p>
+<p>瀑布模型还有一个变体叫V模型，V模型极其重视测试，当编码结束后由小到大逐级进行测试，但是瀑布模型仍然没有弥补上瀑布模型的不足，也是一种早期软件工程的开发模型。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/V%E6%A8%A1%E5%9E%8B.png" alt="V模型"></p>
+<h2 id="喷泉模型"><a href="#喷泉模型" class="headerlink" title="喷泉模型"></a>喷泉模型</h2><p>喷泉模型是一种面向对象的开发模型，喷泉模式的开发过程具有迭代性和无间隙性，在迭代中不断地完善系统软件。它的每个阶段没有明确的界限，开发人员可以同步进行，优点是可以提高开发效率，节约开发成本，缺点是管理不易，此种模型需要严格的管理文档。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%96%B7%E6%B3%89%E6%A8%A1%E5%9E%8B.png" alt="喷泉模型"></p>
+<h2 id="演化模型"><a href="#演化模型" class="headerlink" title="演化模型"></a>演化模型</h2><p>演化模型是迭代的过程模型，使得软件开发人员能够逐步开发出更完整的软件版本。演化模型特别适用于对软件需求缺乏准确认识的情况。典型的演化模型有原型模型和螺旋模型等。</p>
+<h3 id="原型模型"><a href="#原型模型" class="headerlink" title="原型模型"></a>原型模型</h3><p>原型模型是在客户不能明确表达需求时所使用的一种开发模型，个即先做一个demo供用户参考。在做出原型后可以给客户演示以换取和客户更好地沟通，最终确定用户需求。<br>原型模型开始于沟通，其目的是定义软件的总体目标，标识需求，然后快速指定原型开发的计划，确定原型的目标和范围，采用快速设计的方式对其进行建模，并构建原型。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B.png" alt="原型模型"></p>
+<p>根据使用原型的目的不同，原型可分为探索型原型、实验型原型和演化型原型3中。探索型原型的目的是要弄清楚目标的要求，确定所希望的特性。实验型原型的目的是验证方案或算法的合理性。演化型原型的目的是将原型作为目标系统的一部分，通过对原型的多次改进，逐步将原型演化成最终的目标系统。</p>
+<h3 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h3><p>螺旋模型是在原型模型和瀑布型模型的基础上进化而来的，弥补了两钟模型不足的同时加入了风险的分析，螺旋模型适合开发庞大的高风险项目，缺点是需要开发人员具有丰富的风险评估知识，增加了开发成本，延迟了提交时间。<br>螺旋模型将开发过程分为几个螺旋周期，每个螺旋周期大致和瀑布模型相符合，每个螺旋周期分为如下4个工作步骤。</p>
+<ul>
+<li>制定计划。确定软件的目标，选定实施方案，明确项目开发的限制条件。</li>
+<li>风险分析。分析所选的方案，识别风险，消除风险。</li>
+<li>实施工程。实施软件开发，验证阶段性产品。</li>
+<li>用户评估。评估开发工作，提出修正建议，建立下一个周期的开发计划。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png" alt="螺旋模型"></p>
+<h2 id="统一过程-up-模型"><a href="#统一过程-up-模型" class="headerlink" title="统一过程(up)模型"></a>统一过程(up)模型</h2><p>统一过程模型是一种“用例和风险驱动，以架构为中心，迭代并且增量”的开发过程，由UML方法和工具支持。每一个迭代都包含正常软件项目的所有元素：计划、分析和设计、构造、集成和测试，以及内部和外部的发布。<br>统一过程定义了4个技术阶段和其制品：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>动作</th>
+<th>产生的主要工作产品</th>
+<th>终止标志</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>起始阶段(Inception Phase)</td>
+<td>专注于项目的初创活动</td>
+<td>构想文档、初始用例模型、初始项目术语表、初始业务用例、初始风险评估、项目计划（阶段和迭代）、业务模型以及一个或多个原型（需要时）</td>
+<td>生命周期目标</td>
+</tr>
+<tr>
+<td>精化阶段(Elaboration Phase)</td>
+<td>在理解了最初的领域范围之后进行了需求分析和架构演进</td>
+<td>用例模型、补充需求（包括非功能需求）、分析模型、软件体系结构描述、可执行的软件体系结构原型、初步的设计模型、修订的风险列表、项目计划（包括迭代计划、调整的工作流、里程碑和技术工作产品）以及初始用户手册</td>
+<td>生命周期架构</td>
+</tr>
+<tr>
+<td>构建阶段(Construction Phase)</td>
+<td>关注系统的构建，产生实现模型</td>
+<td>设计模型、软件构件、集成的软件增量、测试计划和步骤、测试用例及支持文档（用户收测、安装手册和对于并发增量的描述）</td>
+<td>初始运作功能</td>
+</tr>
+<tr>
+<td>移交阶段(Transition Phase)</td>
+<td>关注于软件提交方面的工作，产生软件增量</td>
+<td>提交的软件增量、β测试报告和综合用户反馈</td>
+<td>产品发布</td>
+</tr>
+</tbody></table>
+<p>统一过程的典型代表是RUP(Rational Unified Process)。RUP是UP的商业扩展，完全兼容UP，但比UP更完整、更详细。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    www.cntwz.com
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2019/08/18/软考-软件工程/" title="软件工程基础知识整理（一）">http://yoursite.com/2019/08/18/软考-软件工程/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="external nofollow" target="_blank">CC BY-SA 4.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/软考-软件工程/" rel="tag"># 软考 软件工程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/14/Spring Data Jpa简介及常用查询整理/" rel="next" title="Spring Data Jpa简介及常用查询整理">
+                <i class="fa fa-chevron-left"></i> Spring Data Jpa简介及常用查询整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">www.cntwz.com</p>
+              <p class="site-description motion-element" itemprop="description">记录学习 分享技术</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件过程模型"><span class="nav-number">1.</span> <span class="nav-text">软件过程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#瀑布模型"><span class="nav-number">1.1.</span> <span class="nav-text">瀑布模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#喷泉模型"><span class="nav-number">1.2.</span> <span class="nav-text">喷泉模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#演化模型"><span class="nav-number">1.3.</span> <span class="nav-text">演化模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模型"><span class="nav-number">1.3.1.</span> <span class="nav-text">原型模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#螺旋模型"><span class="nav-number">1.3.2.</span> <span class="nav-text">螺旋模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一过程-up-模型"><span class="nav-number">1.4.</span> <span class="nav-text">统一过程(up)模型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">www.cntwz.com</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
