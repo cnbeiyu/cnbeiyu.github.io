@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/vue中echarts的使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/从浏览器中输入url后会发生哪些事情/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="www.cntwz.com">
@@ -261,7 +261,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/20/vue中echarts的使用/" itemprop="url">vue中echarts的使用</a></h1>
+                <a class="post-title-link" href="/2019/08/28/从浏览器中输入url后会发生哪些事情/" itemprop="url">从浏览器中输入URL后会发生哪些事情</a></h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-20T20:50:17+08:00">
-                2019-08-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-28T02:36:44+08:00">
+                2019-08-28
               </time>
             
 
@@ -313,7 +313,266 @@
       
         
           
+            <h1 id="URL处理"><a href="#URL处理" class="headerlink" title="URL处理"></a>URL处理</h1><p>当用户在地址栏中输入一个url后，浏览器首先会对输入内容进行判断，如果不符合url格式，则发送搜索请求，如 <a href="https://www.google.com/search?q=%s" target="_blank" rel="noopener">https://www.google.com/search?q=%s</a> ，若符合URL格式则对URL加上协议，变为完整的URL，如 <a href="https://www.cntwz.com。" target="_blank" rel="noopener">https://www.cntwz.com。</a></p>
+<h1 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h1><p>浏览器获取到一个合格的URL后，需要知道URL对应服务器的IP地址才能发送请求，浏览器首先会向本地内存Cache中发起查询，如果没有则会向本地hosts文件发起查询，若还是没有，则会向自己的DNS服务器发起查询，然后dns服务器会以此通过根域名服务器、顶级域名服务器、权威域名服务器进行递归查询。在查阅相关资料后发现，DNS的内部逻辑远比我想象的复杂的多，之后会另开一篇文章单独写DNS原理（埋坑）。</p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/DNS%E6%9F%A5%E8%AF%A2.jpg" alt="dns查询过程"></p>
+<h1 id="查找浏览器缓存"><a href="#查找浏览器缓存" class="headerlink" title="查找浏览器缓存"></a>查找浏览器缓存</h1><p>浏览器在获取到目标ip后，浏览器先会构建请求行信息，如下所示，准备发起网络请求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP1.1，</span><br></pre></td></tr></table></figure>
+
+<p>在发起网络请求前，浏览器先会对浏览器缓存中查询是否有需要请求文件的缓存标识和结果，浏览器每次拿到返回的请求结果都会将该结果和缓存标识存入浏览器缓存中，如Chrome的缓存存放于.User\AppData\Local\Google\Chrome\User Data\Default\Cache，当缓存中有需要请求的文件时，浏览器会拦截请求，直接返回该资源的副本并且结束请求。浏览器缓存可以提升访问效率，是实现快速资源加载的重要组成部分，如果没有查找到缓存，就会进入接下来的网络请求过程了。</p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%92%8Chttp%E5%85%B3%E7%B3%BB%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="浏览器缓存和http请求关系示意图"></p>
+<h1 id="建立TCP连接"><a href="#建立TCP连接" class="headerlink" title="建立TCP连接"></a>建立TCP连接</h1><p>因为HTTP协议是应用层协议，先需要TCP协议将他发送到网络上，所以在 HTTP 工作开始之前，浏览器需要通过 TCP 与服务器建立连接。所以接下来又到了熟悉的TCP三次握手环节，发送端首先发送一个带SYN（synchronize）标志的数据包给接收方，接收方收到后，回传一个带有SYN/ACK(acknowledegment)标志的数据包以示传达确认信息。最后发送方再回传一个带ACK标志的数据包，代表握手结束。在这过程中若出现问题中断，TCP会再次发送相同的数据包。<br>TCP可以简单理解为：<br>客户端：“你好，有你的快递，请问在家吗？”<br>服务器：“在的，可以送来。”<br>客户端：“好的。”</p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/TCP%E5%92%8CHTTP%E7%9A%84%E5%85%B3%E7%B3%BB%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="TCP和HTTP关系示意图"></p>
+<h1 id="发送HTTP请求"><a href="#发送HTTP请求" class="headerlink" title="发送HTTP请求"></a>发送HTTP请求</h1><p>在连接建立之后，浏览器会构建请求行、请求头等信息，并把和该域名相关的Cookie等信息附加到请求头中，封装成一个报文发送给服务器，请求报文的结构如下:</p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png" alt="HTTP请求报文结构"></p>
+<p>如访问<a href="https://www.cntwz.com的部分请求报文" target="_blank" rel="noopener">https://www.cntwz.com的部分请求报文</a></p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E7%A4%BA%E4%BE%8B.png" alt="请求报文示例"></p>
+<p>在服务器接收到请求信息后，会根据请求信息生成对应的响应报文，响应报文的结构如下:</p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png" alt="HTTP响应报文结构"></p>
+<p>如访问<a href="http://www.cntwz.com的响应报文为" target="_blank" rel="noopener">www.cntwz.com的响应报文为</a></p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E7%A4%BA%E4%BE%8B.png" alt="响应报文示例"></p>
+<p>可以看到因为url中没有确定协议，默认为http协议，服务器在接收到http协议的请求后发出了301状态码，将这个请求重定向到了 <a href="https://www.cntwz.com" target="_blank" rel="noopener">https://www.cntwz.com</a> ，<br>我们重新向 <a href="https://www.cntwz.com" target="_blank" rel="noopener">https://www.cntwz.com</a> 发出http请求，可以看到服务器给出了200状态码，同时告诉了浏览器请求一切正常，可以处理下一个请求了。</p>
+<p><img src="https://github.com/cnbeiyu/MarkdownPhotos/raw/master/blog/%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5URL%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85/%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E7%A4%BA%E4%BE%8B_2.png" alt="响应报文示例_2"></p>
+<h1 id="断开TCP连接"><a href="#断开TCP连接" class="headerlink" title="断开TCP连接"></a>断开TCP连接</h1><p>在完成一次HTTP请求后，服务器并不是马上断开与客户端的连接。在 HTTP/1.1 中，Connection: keep-alive 是默认启用的，表示持久连接，以便处理不久后到来的新请求，无需重新建立连接而增加慢启动开销。在Nginx 中，持久连接超时时间默认值为75秒，如果75秒内没有新到达的请求，则断开与客户端的连接。同时，浏览器每隔 45 秒会向服务器发送 TCP keep-alive 探测包，来判断 TCP 连接状况，如果没有收到 ACK 应答，则主动断开与服务器的连接，如果收到ACK应答，则就到了熟悉的四次挥手环节，双方关闭连接。HTTP keep-alive和TCP keep-alive虽然都是一种保活机制，但是它们完全不相同，一个作用于应用层，一个作用于传输层。</p>
+<h1 id="补充版权说明"><a href="#补充版权说明" class="headerlink" title="补充版权说明"></a>补充版权说明</h1><ul>
+<li><p>图[dns查询过程]来自极客时间-趣谈网络协议（刘超）第18讲</p>
+<p>原文链接：<a href="https://time.geekbang.org/column/article/9895" target="_blank" rel="noopener">https://time.geekbang.org/column/article/9895</a></p>
+</li>
+<li><p>图[浏览器缓存和http请求关系示意图]来自微信公众号前端早读课-彻底理解浏览器的缓存机制（葉河英）</p>
+<p>原文链接：<a href="https://mp.weixin.qq.com/s/d2zeGhUptGUGJpB5xHQbOA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/d2zeGhUptGUGJpB5xHQbOA</a></p>
+</li>
+<li><p>图[TCP和HTTP关系示意图]来自极客时间-浏览器工作原理与实践（李兵）第3讲</p>
+<p>原文链接：<a href="https://time.geekbang.org/column/article/116588" target="_blank" rel="noopener">https://time.geekbang.org/column/article/116588</a></p>
+</li>
+<li><p>图[HTTP请求报文结构]和图[HTTP响应报文结构]来自简书-浏览器中输入url后发生了什么（Dreammin_chen）</p>
+<p>原文链接：<a href="https://www.jianshu.com/p/c1dfc6caa520" target="_blank" rel="noopener">https://www.jianshu.com/p/c1dfc6caa520</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/软件工程之软件开发模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="www.cntwz.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="谈闻卓的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/18/软件工程之软件开发模型/" itemprop="url">软件工程之软件过程模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T19:32:17+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h1><p>软件过程模型习惯上也称为软件开发模型，它是软件开发的全部过程、活动和任务的结构框架。典型的软件过程模型有瀑布模型<br>增量模型、演化模型（原型模型、螺旋模型）、喷泉模型、基于构件的开发模型和形式化方法模型等</p>
+<h2 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h2><p>瀑布模型是最早的开发模型，用于结构化开发，与1970年被提出，当年盛极一时，如今已逐渐淡出人们的视野。落寞的根本原因是需求阶段难以把控，在项目初期难以真正确定需求，回溯成本巨大。瀑布模型的优点也显而易见，容易理解，管理成本低，该模型只适用于需求明确的项目或者是二次开发的项目。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png" alt="瀑布模型"></p>
+<p>瀑布模型还有一个变体叫V模型，V模型极其重视测试，当编码结束后由小到大逐级进行测试，但是瀑布模型仍然没有弥补上瀑布模型的不足，也是一种早期软件工程的开发模型。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/V%E6%A8%A1%E5%9E%8B.png" alt="V模型"></p>
+<h2 id="喷泉模型"><a href="#喷泉模型" class="headerlink" title="喷泉模型"></a>喷泉模型</h2><p>喷泉模型是一种面向对象的开发模型，喷泉模式的开发过程具有迭代性和无间隙性，在迭代中不断地完善系统软件。它的每个阶段没有明确的界限，开发人员可以同步进行，优点是可以提高开发效率，节约开发成本，缺点是管理不易，此种模型需要严格的管理文档。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%96%B7%E6%B3%89%E6%A8%A1%E5%9E%8B.png" alt="喷泉模型"></p>
+<h2 id="演化模型"><a href="#演化模型" class="headerlink" title="演化模型"></a>演化模型</h2><p>演化模型是迭代的过程模型，使得软件开发人员能够逐步开发出更完整的软件版本。演化模型特别适用于对软件需求缺乏准确认识的情况。典型的演化模型有原型模型和螺旋模型等。</p>
+<h3 id="原型模型"><a href="#原型模型" class="headerlink" title="原型模型"></a>原型模型</h3><p>原型模型是在客户不能明确表达需求时所使用的一种开发模型，个即先做一个demo供用户参考。在做出原型后可以给客户演示以换取和客户更好地沟通，最终确定用户需求。<br>原型模型开始于沟通，其目的是定义软件的总体目标，标识需求，然后快速指定原型开发的计划，确定原型的目标和范围，采用快速设计的方式对其进行建模，并构建原型。</p>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B.png" alt="原型模型"></p>
+<p>根据使用原型的目的不同，原型可分为探索型原型、实验型原型和演化型原型3中。探索型原型的目的是要弄清楚目标的要求，确定所希望的特性。实验型原型的目的是验证方案或算法的合理性。演化型原型的目的是将原型作为目标系统的一部分，通过对原型的多次改进，逐步将原型演化成最终的目标系统。</p>
+<h3 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h3><p>螺旋模型是在原型模型和瀑布型模型的基础上进化而来的，弥补了两钟模型不足的同时加入了风险的分析，螺旋模型适合开发庞大的高风险项目，缺点是需要开发人员具有丰富的风险评估知识，增加了开发成本，延迟了提交时间。<br>螺旋模型将开发过程分为几个螺旋周期，每个螺旋周期大致和瀑布模型相符合，每个螺旋周期分为如下4个工作步骤。</p>
+<ul>
+<li>制定计划。确定软件的目标，选定实施方案，明确项目开发的限制条件。</li>
+<li>风险分析。分析所选的方案，识别风险，消除风险。</li>
+<li>实施工程。实施软件开发，验证阶段性产品。</li>
+<li>用户评估。评估开发工作，提出修正建议，建立下一个周期的开发计划。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/cnbeiyu/MarkdownPhotos/master/blog/%E8%BD%AF%E8%80%83%E8%BD%AF%E8%AE%BE_%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png" alt="螺旋模型"></p>
+<h2 id="统一过程-up-模型"><a href="#统一过程-up-模型" class="headerlink" title="统一过程(up)模型"></a>统一过程(up)模型</h2><p>统一过程模型是一种“用例和风险驱动，以架构为中心，迭代并且增量”的开发过程，由UML方法和工具支持。每一个迭代都包含正常软件项目的所有元素：计划、分析和设计、构造、集成和测试，以及内部和外部的发布。<br>统一过程定义了4个技术阶段和其制品：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>动作</th>
+<th>产生的主要工作产品</th>
+<th>终止标志</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>起始阶段(Inception Phase)</td>
+<td>专注于项目的初创活动</td>
+<td>构想文档、初始用例模型、初始项目术语表、初始业务用例、初始风险评估、项目计划（阶段和迭代）、业务模型以及一个或多个原型（需要时）</td>
+<td>生命周期目标</td>
+</tr>
+<tr>
+<td>精化阶段(Elaboration Phase)</td>
+<td>在理解了最初的领域范围之后进行了需求分析和架构演进</td>
+<td>用例模型、补充需求（包括非功能需求）、分析模型、软件体系结构描述、可执行的软件体系结构原型、初步的设计模型、修订的风险列表、项目计划（包括迭代计划、调整的工作流、里程碑和技术工作产品）以及初始用户手册</td>
+<td>生命周期架构</td>
+</tr>
+<tr>
+<td>构建阶段(Construction Phase)</td>
+<td>关注系统的构建，产生实现模型</td>
+<td>设计模型、软件构件、集成的软件增量、测试计划和步骤、测试用例及支持文档（用户收测、安装手册和对于并发增量的描述）</td>
+<td>初始运作功能</td>
+</tr>
+<tr>
+<td>移交阶段(Transition Phase)</td>
+<td>关注于软件提交方面的工作，产生软件增量</td>
+<td>提交的软件增量、β测试报告和综合用户反馈</td>
+<td>产品发布</td>
+</tr>
+</tbody></table>
+<p>统一过程的典型代表是RUP(Rational Unified Process)。RUP是UP的商业扩展，完全兼容UP，但比UP更完整、更详细。</p>
+<h2 id="敏捷方法"><a href="#敏捷方法" class="headerlink" title="敏捷方法"></a>敏捷方法</h2><p>总体目标是通过“尽可能早地、持续地对有价值的软件的交付”使客户满意。通过在软件开发过程中加入灵活性，敏捷方法使用户能够在开发周期的后期或改变需求。<br>敏捷过程的典型方法有以下几种，每一种方法基于一套原则，这些原则实现了敏捷方法所宣称的理念（敏捷宣言）。<br>敏捷宣言价值观：</p>
+<ul>
+<li>个体和互动 高于 流程和工具</li>
+<li>工作的软件 高于 详尽的文档</li>
+<li>客户合作 高于 合同谈判</li>
+<li>响应变化 高于 遵循计划</li>
+</ul>
+<p>也就是说，尽管右项有其价值，<br>我们更重视左项的价值。</p>
+<h3 id="极限编程（XP）"><a href="#极限编程（XP）" class="headerlink" title="极限编程（XP）"></a>极限编程（XP）</h3><p> XP是一种轻量级（敏捷）、高效、低风险、柔性、可预测的、科学的软件开发方式。它由价值观、原则、实践和行为组成。在所有敏捷方法钟XP是最引人注目的，XP在一些对费用控制严格的公司使用。</p>
+<p> <strong>4大价值观</strong></p>
+<ul>
+<li>沟通(Communication)</li>
+<li>简单(Simplicity)</li>
+<li>反馈(Feedback)</li>
+<li>勇气(Courage)</li>
+</ul>
+<p> <strong>5个原则</strong></p>
+<ul>
+<li>快速反馈</li>
+<li>简单性假设</li>
+<li>逐步修改</li>
+<li>提倡更改</li>
+<li>优质工作</li>
+</ul>
+<p> <strong>12个最佳实践</strong></p>
+<ul>
+<li>计划游戏：快速制定计划、随着细节的不断变化而完善</li>
+<li>小型发布：系统的设计要能过尽可能早地交付</li>
+<li>隐喻：找到适合的比喻传达信息</li>
+<li>简单设计：只处理当前的需求，使设计保持简单</li>
+<li>测试先行：先写测试代码，然后编写程序</li>
+<li>重构：重新审视需求和设计，重新明确地描述它们以符合新的和现有的需求</li>
+<li>持续集成：可以按日甚至按小时为客户提供可运行的版本</li>
+<li>结队编程</li>
+<li>集体代码所有制</li>
+<li>每周工作40小时</li>
+<li>现场客户</li>
+<li>编码标准</li>
+</ul>
+<h3 id="水晶法-Cyrstal"><a href="#水晶法-Cyrstal" class="headerlink" title="水晶法(Cyrstal)"></a>水晶法(Cyrstal)</h3><p>水晶法认为每一个不同的项目都需要一套不同的策略、约定和方法论,认为人对软件质量有重要的影响，相比XP，它是一种纪律约束较少的方法，虽然效率不如XP，但是能被更多的人接收。</p>
+<h3 id="并列争求法（Scrum）"><a href="#并列争求法（Scrum）" class="headerlink" title="并列争求法（Scrum）"></a>并列争求法（Scrum）</h3><p>并列征求法使用迭代的方法，其中，把每30天一次的迭代成为一个“冲刺”，并按需求的优先级别来实现产品。多个自组织和自治的小组并行地递增实现产品。协调是通过简短的日常情况会议来进行，就像橄榄球中的“并列争球”。该方法强调了这样一个试试，即明确定义了的可重复方法过程仅限于在明确定义的可重复的环境中，为明确定义了的可重复的人员所用，去解决明确定义了的可重复的问题。</p>
+<h3 id="自适应软件开发（ASD）"><a href="#自适应软件开发（ASD）" class="headerlink" title="自适应软件开发（ASD）"></a>自适应软件开发（ASD）</h3><ul>
+<li>有一个使命作为指导</li>
+<li>特征被视为客户价值的关键点</li>
+<li>过程中的等待很是重要的，因此”做”与“重做”同样关键</li>
+<li>变化不被视为改正，而是被视为对软件开发实际情况的调整</li>
+<li>确定的交付时间迫使开发人员认真考虑每一个生产的版本的关键需求</li>
+<li>风险也包含其中</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一篇文章写了3个小时，我的速度也太慢了吧。文章的大部分资料都整理自清华大学出版社的《软件设计师教程（第5版）》，结合希赛网王寄清老师的软件设计师视频稍加补充。敏捷开发是几十年软件开发经验的沉淀，固然值得我们学习，但我觉得在我现在的大学学习中即使是水晶法也过于复杂了，门槛较高不适用与我们3、4人组的大学项目开发。</p>
+
           
         
       
@@ -1139,7 +1398,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1152,7 +1411,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
